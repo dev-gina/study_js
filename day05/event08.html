@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>이벤트08</title>
+</head>
+<body>
+ <div>
+  <label><input type="checkbox" name="checkTest" value="선택1">선택1</label>
+  <label><input type="checkbox" name="checkTest" value="선택2">선택2</label>
+  <label><input type="checkbox" name="checkTest" value="선택3">선택3</label>
+  <p id="result"></p>
+</div>
+</body>
+<script>
+ // 체크 박스가 3개 모두 선택되면 result에 환영합니다. 메시지를 출력
+ // 체크 박스가 3개 미만이면 result에 아무것도 출력하지 않는다.
+
+
+ NodeList.prototype.map = Array.prototype.map;
+  const checkboxes = document.querySelectorAll("input[name=checkTest]");
+  const p = document.querySelector("#result");
+  console.log(checkboxes, p)
+
+  checkboxes.forEach((check)=>{
+    check.addEventListener("click",()=>{
+      checkboxes.checked = checkboxes.map((checkbox) => checkbox.checked).filter((checked) => checked).length === 3;
+      
+      if (checkboxes.checked) {
+        p.innerText = "환영합니다!";
+      } else {
+        p.innerText = "";
+      }
+      
+    })
+  })
+  
+</script>
+</html>
+
+
+
+
+
+ 
